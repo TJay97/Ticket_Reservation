@@ -1,0 +1,27 @@
+<!--Handles the user profile by listing down all the purchases upto date
+Contains button to reduce the selected ticket amount one by one or altogether at once-->
+
+<div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+        <h2><i class="fas fa-layer-group"></i> Reserved Tickets</h2>
+        <hr/>
+        {{# each orders }}
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <ul class="list-group">
+                        {{# each this.items }}
+                            <li class="list-group-item">
+                                <span class="badge">{{ this.price }}</span>
+                                {{ this.item.title }} | {{ this.qty }} Tickets
+                            </li>
+                        {{/each}}
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <strong>Total Price: Rs{{ this.cart.totalPrice }}</strong>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>

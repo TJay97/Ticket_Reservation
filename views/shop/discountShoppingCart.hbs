@@ -1,0 +1,95 @@
+<!--The Ticket wallet/ Shopping cart page that is for the Govt Employee who have a discount,
+ After being verified that they are government employees by checking their NIC number-->
+
+{{# if products }}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <ul class="list-group">
+                {{# each products }}
+                    <li class="list-group-item">
+                        <span class="badge">{{ this.qty }}</span>
+                        <strong>{{ this.item.title }}</strong>
+                        <span class="label label-success">Rs{{ this.price }}</span>
+                        <div class="btn-group">
+                            <button class="btn btn-primary btn-xs dropdown-toggle" type="button" data-toggle="dropdown">Action <span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a href="/reduce/{{this.item._id}}">Reduce by 1</a></li>
+                                <li><a href="/remove/{{this.item._id}}">Remove All</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3 text-center">
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Verified Government Employee!</strong><br> You are now eligible for a discount of 10%
+    </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3 text-center">
+            <strong>Total: Rs {{ totalPrice }} </strong><br/>
+            <strong>Discount: Rs {{ discount }} </strong><br/>
+            <h4><strong><span style="color: #237c39; "> Grand Total: Rs {{ discountedPrice }} </span></strong></h4>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal">
+                Checkout
+            </button>
+        </div>
+    </div>
+
+    <div class="modal" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title text-center text-primary">Select Payment Method</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="col-sm-4 col-md-4 col-md-offset-4 col-sm-offset-4">
+                                    <a href="/discountCheckout" type="button" class="btn btn-warning"><img src="http://sampathsecurities.lk/wp-content/uploads/2018/09/sampath-logo.png" height="150" width="150"></a>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="col-sm-4 col-md-4 col-md-offset-4 col-sm-offset-4">
+                                    <a href="/discountDialogCheckout" type="button" class="btn btn-danger"><img src="data:image/png;base64,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" height="150" width="150"></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <div class="col-sm-4 col-md-4 col-md-offset-4 col-sm-offset-4">
+                        <button type="button" class="btn btn-primary btn-block" data-dismiss="modal">Back</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+{{ else }}
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
+            <h2>No Items in Cart</h2>
+        </div>
+    </div>
+{{/if}}
+

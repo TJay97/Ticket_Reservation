@@ -1,0 +1,43 @@
+<!--The Homepage is generated here, the ticket details are displayed by getting them from the db-->
+
+<div class="row" id="head">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+        <div id="success" class="alert alert-success" {{#if noMessages}}hidden{{/if}}>
+            {{ successMsg }}
+        </div>
+    </div>
+</div>
+
+{{# each products }}
+    <div class="row">
+        {{# each this }}
+            <div class="col-sm-6 col-md-4 bg-dark">
+                <div class="thumbnail">
+                    <img src="{{ this.imagePath }}" alt="..." class="img-responsive">
+                    <div class="caption">
+                        <h3 class="text-center">{{ this.title }}</h3>
+                        <p class="description text-center">{{ this.description }}</p>
+                        <div class="price pull-right">Rs{{ this.price }}</div>
+                        <label>Pick a date: </label>&nbsp &nbsp<input type="date" value="2019-06-21">
+                        <div class="clearfix">
+                            <table>
+                                <tr><label style="color: white"> space </label></tr>
+                                <tr>
+                                    <td>
+                                        <label style="color: white"> Used as aspace </label>
+                                    </td>
+                                    <td>
+                                        <a href="/add-to-cart/{{this._id}}" class="btn btn-success btn-block pull-right" role="button">Reserve Ticket</a><br/><br/>
+                                    </td>
+
+                                </tr>
+                            </table>
+                            <h5 class="text-center text-success"><i class="far fa-lightbulb bg-warning"></i>  Click multiple times to increase the number of tickets</h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+{{/each}}

@@ -1,0 +1,36 @@
+<!--The Checkout page is for the Government Employees with discount , to make payments through Dialog Mobile Number-->
+
+<div class="row">
+    <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
+        <div class="text-center"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Dialog_Axiata_logo.svg/1200px-Dialog_Axiata_logo.svg.png" height="150" width="350"></div>
+        <h1 class="text-center">Checkout <i class="fas fa-mobile-alt"></i>  <i class="fas fa-sms"></i>  <i class="fas fa-phone-square"></i></h1>
+        <div class="alert alert-info alert-dismissible text-center">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Verified Government Employee!</strong><br>
+        </div>
+        <h4 class="text-center">Your Grand Total: Rs{{grandTotal}}</h4>
+        <div id="charge-error" class="alert alert-danger {{#if noError}}hidden{{/if}}">
+            {{errMsg}}
+        </div>
+        <form action="/sms" method="post" id="sms-form">
+            <div class="row">
+                <h4 class="text-center">Continuing with this payment using Dialog service will be credited to your mobile bill!!</h4>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="name">Dialog Mobile Number:</label>
+                        <input type="text" id="mobile" class="form-control" pattern="[9][4][0-9]{9}" required>
+                    </div>                                      <!--The mobile number shoud start with 94 followed by 9 other digits-->
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="address">Pin Number:</label>
+                        <input type="text" id="pin" class="form-control" pattern="[0-9]{4}" required>
+                    </div>                                     <!-- Pin should be a 4 digit number-->
+                </div>
+            </div>
+            <button type="submit" class="btn btn-success btn-block">Pay now</button>
+        </form>
+    </div>
+</div>
+
+<script type="text/javascript" src="javascripts/sms.js"></script>
