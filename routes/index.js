@@ -126,7 +126,7 @@ router.post('/checkout', isLoggedIn, function(req, res, next) {
     var cart = new Cart(req.session.cart);
     
     var stripe = require("stripe")(
-        "sk_test_s1bT1OwyvcLcnwFIXcr8kjRH00pO3xUgeF" //My personal Stripe SECRET API key for testing purposes
+        "<removed>" //My personal Stripe SECRET API key for testing purposes
     );
 
     stripe.charges.create({
@@ -155,7 +155,7 @@ router.post('/checkout', isLoggedIn, function(req, res, next) {
             They can be viewed from my ethereal.email account
             Preview URL: https://ethereal.email/message
             Username: mustafa66@ethereal.email
-            Password: nHTk7j1EJDn2Eunn */
+            Password: <I removed it for security purposes> */
 
             const nodemailer = require("nodemailer");
 
@@ -170,7 +170,7 @@ router.post('/checkout', isLoggedIn, function(req, res, next) {
                     port: 587,
                     auth: {
                         user: 'mustafa66@ethereal.email',
-                        pass: 'nHTk7jJ1EJDJn2Eunn'
+                        pass: '<Removed for security>
                     }
                 });
 
@@ -190,7 +190,7 @@ router.post('/checkout', isLoggedIn, function(req, res, next) {
                 console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
                 // Preview URL: https://ethereal.email/message
                 // Username: mustafa66@ethereal.email
-                //Password: nHTk7j1EJDn2Eunn
+                //Password: <I removed it for security purposes>
             }
             main().catch(console.error);
 
@@ -213,8 +213,8 @@ router.post('/sms', isLoggedIn, function(req, res, next) {
 
     const Nexmo = require('nexmo');
     const nexmo = new Nexmo({
-        apiKey: '13578082',     // My personal NEXMO account API KEY
-        apiSecret: 'bLfy12EopI9lTwUs'  // My personal NEXMO account SECRET API KEY
+        apiKey: '<removed>',     // My personal NEXMO account API KEY I removed it before commiting to git
+        apiSecret: '<removed>'  // My personal NEXMO account SECRET API KEY
     }, { debug: true });
 
     nexmo.message.sendSms(
