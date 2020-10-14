@@ -1,7 +1,7 @@
 /*Stripe is a third party resource which eliminate needless complexity and details
 * when conducting safer online payments*/
 
-Stripe.setPublishableKey('pk_test_MZCsVXhAX2ujPC8ih9Vaqvrj00t6wiHd6d'); //My personal Stripe API key for testing purposes
+Stripe.setPublishableKey('<removed>'); //My personal Stripe API key for testing purposes
 
 var $form = $('#checkout-form');
 
