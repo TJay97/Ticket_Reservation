@@ -154,7 +154,7 @@ router.post('/checkout', isLoggedIn, function(req, res, next) {
 
             They can be viewed from my ethereal.email account
             Preview URL: https://ethereal.email/message
-            Username: mustafa66@ethereal.email
+            Username: <I removed it for security purposes>
             Password: <I removed it for security purposes> */
 
             const nodemailer = require("nodemailer");
@@ -169,7 +169,7 @@ router.post('/checkout', isLoggedIn, function(req, res, next) {
                     host: 'smtp.ethereal.email',
                     port: 587,
                     auth: {
-                        user: 'mustafa66@ethereal.email',
+                        user: '<I removed it for security purposes>',
                         pass: '<Removed for security>
                     }
                 });
@@ -189,7 +189,7 @@ router.post('/checkout', isLoggedIn, function(req, res, next) {
                 // Preview only available when sending through an Ethereal account
                 console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
                 // Preview URL: https://ethereal.email/message
-                // Username: mustafa66@ethereal.email
+                // Username: <I removed it for security purposes>
                 //Password: <I removed it for security purposes>
             }
             main().catch(console.error);
